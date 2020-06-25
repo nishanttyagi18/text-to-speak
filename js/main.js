@@ -47,6 +47,7 @@ if(synth.onvoiceschanged !== undefined){
 const speak = ()=>{
     if(synth.speaking){
         console.error('Already speaking...');
+        return;
     }
     if(textInput.value !== ''){
         const speakText = new SpeechSynthesisUtterance(textInput.value);
@@ -64,7 +65,7 @@ const speak = ()=>{
     const selectedVoice = voiceSelect.selectedOptions[0].getAttribute('data-name');
 
     voices.forEach(voice => {
-        if(voice.name == selectedVoice){
+        if(voice.name === selectedVoice){
             speakText.voice = voice;
         }
     });
@@ -93,4 +94,3 @@ pitch.addEventListener('change',e=>{
 
 // voice select chagne 
 // voiceSelect.addEventListener('change',e=> speak());
-
